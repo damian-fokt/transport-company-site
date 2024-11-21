@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Heavy-Duty Transport Services in Poland and Europe"
+    />
+    <meta
+      name="keywords"
+      content="Trucking, Heavy Transport, Logistics, International Freight"
+    />
+    <meta name="author" content="Olbi-Trans" />
+    <title>Olbi-Trans | Heavy-Duty Transport Services</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="navbar">
+      <div class="container">
+        <img src="assets/logo.jpg" alt="Olbi-Trans Logo" class="logo" />
+        <nav class="nav-links">
+          <!-- Left-aligned menu items -->
+          <div class="menu-left">
+            <a href="#about" data-key="about-link">About Us</a>
+            <a href="#services" data-key="services-link">Services</a>
+            <a href="#fleet" data-key="fleet-link">Fleet</a>
+            <a href="#contact" data-key="contact-link">Contact</a>
+          </div>
+          <!-- Right-aligned language button -->
+          <div class="menu-right">
+            <button id="language-toggle" class="lang-btn">Polski</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1 data-key="hero-title">Professional Heavy-Duty Transport</h1>
+        <p data-key="hero-desc">
+          Fast, reliable, and secure transport services across Poland and
+          Europe.
+        </p>
+        <a href="#services" class="cta-btn" data-key="cta-learn-more"
+          >Learn More</a
+        >
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 data-key="about-title">About Us</h2>
+        <p data-key="about-desc">
+          Olbi-Trans specializes in heavy-duty transport and logistics within
+          Poland and Europe. With a fleet of modern vehicles, we pride ourselves
+          on punctuality, safety, and customer satisfaction.
+        </p>
+        <ul>
+          <li data-key="about-benefit-1">Punctual and reliable deliveries</li>
+          <li data-key="about-benefit-2">Modern and well-maintained fleet</li>
+          <li data-key="about-benefit-3">Extensive international experience</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 data-key="services-title">Our Services</h2>
+        <div class="service-item">
+          <h3 data-key="service-1-title">Domestic Transport</h3>
+          <p data-key="service-1-desc">
+            Efficient and cost-effective transport services within Poland.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3 data-key="service-2-title">International Logistics</h3>
+          <p data-key="service-2-desc">
+            Seamless and reliable freight transport across European borders.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3 data-key="service-3-title">Specialized Transport</h3>
+          <p data-key="service-3-desc">
+            Handling oversized, fragile, or specialized goods with care.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="fleet">
+      <div class="container">
+        <h2 data-key="fleet-title">Our Fleet</h2>
+        <p data-key="fleet-desc">
+          Our fleet features state-of-the-art trucks designed for all types of
+          freight. Each vehicle is meticulously maintained to ensure safety and
+          efficiency.
+        </p>
+        <div class="fleet-gallery">
+          <img src="assets/fleet1.jpg" alt="Fleet Vehicle 1" />
+          <img src="assets/fleet2.jpg" alt="Fleet Vehicle 2" />
+          <img src="assets/fleet3.jpg" alt="Fleet Vehicle 3" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 data-key="contact-title">Contact Us</h2>
+        <p data-key="contact-desc">
+          Have questions or need a quote? Get in touch with us today!
+        </p>
+        <form id="contact-form">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            data-key="form-name"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            data-key="form-email"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Your Phone Number"
+            data-key="form-phone"
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+            data-key="form-message"
+          ></textarea>
+          <button type="submit" data-key="form-submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p data-key="footer-text">© 2024 Olbi-Trans. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
