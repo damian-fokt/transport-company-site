@@ -31,28 +31,9 @@ section {
 
 /* Navbar */
 
-.menu-left {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.menu-left a {
-  background-color: transparent;
-  border: 2px solid #444;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #000;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 25px; /* Zaokrąglone rogi */
-  transition: all 0.3s ease;
-}
-
 .navbar {
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
   background: #fff;
   position: sticky;
   top: 0;
@@ -60,14 +41,17 @@ section {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar button {
-  margin-left: auto;
-  display: flex;
+.nav-links {
+  margin-bottom: 10px;
   align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-links a {
+  display: inline-flex;
   background-color: transparent;
   border: 2px solid #444;
   padding: 10px 20px;
-  font-size: 16px;
   color: #000;
   font-weight: 500;
   cursor: pointer;
@@ -75,14 +59,27 @@ section {
   transition: all 0.3s ease;
 }
 
-.navbar button:hover {
+.nav-links a:hover {
   background-color: #444;
   color: #fff;
   border-color: #666;
 }
 
-.menu-right {
-  align-self: auto-flow;
+.nav-links button {
+  background-color: transparent;
+  border: 2px solid #444;
+  padding: 10px 20px;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 25px; /* Zaokrąglone rogi */
+  transition: all 0.3s ease;
+}
+
+.nav-links button:hover {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
 }
 
 /* Hero Section */

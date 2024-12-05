@@ -129,9 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function scrollToSection(index) {
     if (index >= 0 && index < sections.length) {
-      sections[index].scrollIntoView({ behavior: 'smooth' });
+      sections[index].scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+
     }
+
+
   }
+
+
 
   window.addEventListener('wheel', (event) => {
     if (isScrolling) return; // Zapobieganie szybkiemu przewijaniu
@@ -146,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Przewijanie w górę
       currentIndex = Math.max(currentIndex - 1, 0);
     }
+
     scrollToSection(currentIndex);
   });
 });
