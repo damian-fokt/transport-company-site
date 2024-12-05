@@ -30,9 +30,11 @@ a {
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .container {
   width: 100%;
 }
+
 .nav-links {
   display: flex;
   justify-content: space-between;
@@ -187,4 +189,46 @@ a {
 .language-switch {
   text-align: right;
   padding: 10px;
+}
+
+/* Additional Styles for Full-Screen Sections */
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+section {
+  height: 100vh; /* Pełna wysokość widoku */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navbar Button Enhancements */
+nav button {
+  background-color: transparent;
+  border: 2px solid #444;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+/* Hover Effect for Frames */
+.frame-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #222;
+  padding: 20px;
+  display: inline-block;
+}
+
+.frame-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
