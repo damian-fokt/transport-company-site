@@ -121,3 +121,31 @@ switchLanguage('pl');
 
 // Set Default Language to Polish
 switchLanguage('pl');
+
+document.addEventListener('DOMContentLoaded', () => {
+  let sections = document.querySelectorAll('section');
+  let currentIndex = 0;
+  let isScrolling = false;
+
+  function scrollToSection(index) {
+    if (index >= 0 && index < sections.length) {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  window.addEventListener('wheel', (event) => {
+    if (isScrolling) return; // Zapobieganie szybkiemu przewijaniu
+
+    isScrolling = true;
+    setTimeout(() => { isScrolling = false; }, 250); // Debounce scroll
+
+    if (event.deltaY > 0) {
+      // Przewijanie w dół
+      currentIndex = Math.min(currentIndex + 1, sections.length - 1);
+    } else {
+      // Przewijanie w górę
+      currentIndex = Math.max(currentIndex - 1, 0);
+    }
+    scrollToSection(currentIndex);
+  });
+});

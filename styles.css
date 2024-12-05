@@ -5,6 +5,7 @@ body {
   padding: 0;
   color: #000;
   background: #fff;
+  scroll-behavior: smooth; /* Płynne przewijanie */
 }
 
 h1,
@@ -18,7 +19,35 @@ a {
   color: inherit;
 }
 
+/* Sekcje na pełną wysokość ekranu */
+section {
+  min-height: 100vh; /* Pełna wysokość widoku */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
 /* Navbar */
+
+.menu-left {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu-left a {
+  background-color: transparent;
+  border: 2px solid #444;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 25px; /* Zaokrąglone rogi */
+  transition: all 0.3s ease;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -31,52 +60,29 @@ a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-  width: 100%;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.menu-left {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.menu-left a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.menu-left a:hover {
-  color: #ff220c;
-}
-
-/* Right-aligned language button */
-.menu-right {
+.navbar button {
   margin-left: auto;
   display: flex;
   align-items: center;
-}
-
-.lang-btn {
-  border: none;
-  background: none;
-  color: #000;
+  background-color: transparent;
+  border: 2px solid #444;
+  padding: 10px 20px;
   font-size: 16px;
+  color: #000;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.3s;
+  border-radius: 25px; /* Zaokrąglone rogi */
+  transition: all 0.3s ease;
 }
 
-.lang-btn:hover {
-  color: #ff220c;
+.navbar button:hover {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+.menu-right {
+  align-self: auto-flow;
 }
 
 /* Hero Section */
@@ -85,7 +91,7 @@ a {
   text-align: center;
   color: white;
   background: url("assets/truck.jpg") no-repeat center center/cover;
-  height: 65vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,53 +100,44 @@ a {
 .hero-text {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 12px; /* Zaokrąglenie rogów */
+  border: 2px solid #ff220c; /* Czerwone obramowanie */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-text:hover {
+  transform: scale(1.05); /* Powiększenie ramki */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Subtelny cień */
 }
 
 /* About Section */
 .about {
   padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.about ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about li::before {
-  content: "✔";
-  color: #ff220c;
-  margin-right: 0.5rem;
-}
-
-/* Services */
-.services {
+/* Usługi i pozostałe sekcje */
+.services,
+.fleet,
+.contact {
   padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.service-item {
-  padding: 1rem 0;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-.service-item:hover {
-  background: #f9f9f9;
-}
-
-/* Fleet */
-.fleet {
-  padding: 4rem 2rem;
-}
-
+/* Galeria flotowa */
 .fleet-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
 }
 
 .fleet-gallery img {
-  width: calc(33.333% - 10px);
+  width: calc(33.333% - 20px);
   border-radius: 8px;
   object-fit: cover;
 }
@@ -184,51 +181,4 @@ a {
   text-align: center;
   background: #f1f1f1;
   padding: 1rem 0;
-}
-
-.language-switch {
-  text-align: right;
-  padding: 10px;
-}
-
-/* Additional Styles for Full-Screen Sections */
-html,
-body {
-  scroll-behavior: smooth;
-}
-
-section {
-  height: 100vh; /* Pełna wysokość widoku */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Navbar Button Enhancements */
-nav button {
-  background-color: transparent;
-  border: 2px solid #444;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-nav button:hover {
-  background-color: #444;
-  color: #fff;
-  border-color: #666;
-}
-
-/* Hover Effect for Frames */
-.frame-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid #222;
-  padding: 20px;
-  display: inline-block;
-}
-
-.frame-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
