@@ -29,57 +29,120 @@ section {
   box-sizing: border-box;
 }
 
-/* Navbar */
-
+/* Navbar Layout */
 .navbar {
-  justify-content: space-between;
-  align-items: center;
   background: #fff;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 2rem; /* Add spacing on the sides */
+  box-sizing: border-box; /* Include padding in width */
+}
+.container {
+  display: flex; /* Flexbox for horizontal alignment */
+  align-items: center; /* Center vertically */
+  justify-content: space-between; /* Space out elements */
+  width: 100%; /* Ensure full-width navbar */
+}
+/* Logo */
+.logo {
+  height: 50px;
 }
 
+/* Nav Links (Menu Buttons) */
 .nav-links {
-  margin-bottom: 10px;
-  align-items: center;
-  padding: 1rem 2rem;
+  display: flex;
+  gap: 10px; /* Space between menu links */
+  align-items: center; /* Ensure buttons align vertically */
+  padding-bottom: 10px;
 }
 
-.nav-links a {
+/* Shared Styles for Buttons */
+.nav-links a,
+.nav-links button,
+.lang-btn {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: 2px solid #444;
   padding: 10px 20px;
-  color: #000;
-  font-weight: 500;
+  font-size: 16px; /* Ensure same font size */
+  font-family: "Roboto", sans-serif; /* Ensure same font family */
+  font-weight: 500; /* Same font weight */
   cursor: pointer;
-  border-radius: 25px; /* Zaokrąglone rogi */
+  border-radius: 25px; /* Same rounded corners */
+  color: #000;
   transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
-  background-color: #444;
-  color: #fff;
-  border-color: #666;
-}
-
-.nav-links button {
-  background-color: transparent;
-  border: 2px solid #444;
-  padding: 10px 20px;
-  color: #000;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 25px; /* Zaokrąglone rogi */
-  transition: all 0.3s ease;
-}
-
+.nav-links a:hover,
 .nav-links button:hover {
   background-color: #444;
   color: #fff;
   border-color: #666;
+}
+
+/* Language Button */
+.lang-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+/* Menu Toggle for Mobile */
+.menu-toggle {
+  display: none; /* Hidden by default */
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide nav links on small screens */
+    flex-direction: column; /* Stack links vertically when visible */
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1rem 0;
+  }
+
+  .nav-links.show {
+    display: flex; /* Show links when toggle is clicked */
+  }
+
+  .nav-links a,
+  .nav-links button {
+    text-align: center;
+    padding: 15px 10px;
+    width: initial;
+  }
+
+  .menu-toggle {
+    display: block; /* Show menu toggle button */
+  }
 }
 
 /* Hero Section */

@@ -122,6 +122,13 @@ switchLanguage('pl');
 // Set Default Language to Polish
 switchLanguage('pl');
 
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   let sections = document.querySelectorAll('section');
   let currentIndex = 0;
