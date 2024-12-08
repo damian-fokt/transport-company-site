@@ -36,12 +36,12 @@ section {
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0 2rem; /* Add spacing on the sides */
+  padding: 0.5rem 2rem; /* Add spacing on the sides */
   box-sizing: border-box; /* Include padding in width */
 }
 .container {
+  margin-left: auto;
   display: flex; /* Flexbox for horizontal alignment */
-  align-items: center; /* Center vertically */
   justify-content: space-between; /* Space out elements */
   width: 100%; /* Ensure full-width navbar */
 }
@@ -53,7 +53,7 @@ section {
 /* Nav Links (Menu Buttons) */
 .nav-links {
   display: flex;
-  gap: 10px; /* Space between menu links */
+  gap: 2vw; /* Space between menu links */
   align-items: center; /* Ensure buttons align vertically */
   padding-bottom: 10px;
 }
@@ -63,7 +63,6 @@ section {
 .nav-links button,
 .lang-btn {
   display: inline-flex;
-  justify-content: center;
   align-items: center;
   background-color: transparent;
   border: 2px solid #444;
@@ -108,7 +107,7 @@ section {
 /* Menu Toggle for Mobile */
 .menu-toggle {
   display: none; /* Hidden by default */
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   background: none;
   border: none;
@@ -139,9 +138,13 @@ section {
     padding: 15px 10px;
     width: initial;
   }
-
+  .container {
+    justify-content: none;
+    display: flex;
+  }
   .menu-toggle {
-    display: block; /* Show menu toggle button */
+    display: flex; /* Show menu toggle button */
+    margin-left: auto;
   }
 }
 
