@@ -31,18 +31,36 @@ section {
 
 /* Navbar Layout */
 .navbar {
-  background: #fff;
+  background: rgba(255, 255, 255, 1); /* Transparent navbar */
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 2rem; /* Add spacing on the sides */
   box-sizing: border-box; /* Include padding in width */
+  transition: background 0.3s ease;
 }
-.container {
+
+/* Gdy strona przewinięta w dół, navbar staje się nieprzezroczysty */
+.navbar.transparent {
+  background: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* Przezroczystość w przypadku scrolla na górze */
+}
+
+/* Gdy przewinięto stronę, navbar stanie się całkowicie nieprzezroczysty */
+.navbar:not(.transparent) {
+  background: #fff; /* Pełna widoczność, gdy strona przewinięta w dół */
+}
+
+.menu,
+.menu-bar {
   margin-left: auto;
   display: flex; /* Flexbox for horizontal alignment */
-  justify-content: space-between; /* Space out elements */
+
   width: 100%; /* Ensure full-width navbar */
 }
 /* Logo */
@@ -53,49 +71,31 @@ section {
 /* Nav Links (Menu Buttons) */
 .nav-links {
   display: flex;
-  gap: 2vw; /* Space between menu links */
-  align-items: center; /* Ensure buttons align vertically */
-  padding-bottom: 10px;
+  align-items: center;
+  gap: 2rem;
+  margin-left: auto;
 }
 
 /* Shared Styles for Buttons */
-.nav-links a,
-.nav-links button,
-.lang-btn {
+.nav-links a {
   display: inline-flex;
   align-items: center;
   background-color: transparent;
   border: 2px solid #444;
   padding: 10px 20px;
-  font-size: 16px; /* Ensure same font size */
-  font-family: "Roboto", sans-serif; /* Ensure same font family */
-  font-weight: 500; /* Same font weight */
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 25px; /* Same rounded corners */
+  border-radius: 25px;
   color: #000;
   transition: all 0.3s ease;
 }
 
-.nav-links a:hover,
-.nav-links button:hover {
+.nav-links a:hover {
   background-color: #444;
   color: #fff;
   border-color: #666;
-}
-
-/* Language Button */
-.lang-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 2px solid #444;
-  border-radius: 25px;
-  background-color: transparent;
-  color: #000;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .lang-btn:hover {
@@ -104,93 +104,236 @@ section {
   border-color: #666;
 }
 
-/* Menu Toggle for Mobile */
 .menu-toggle {
   display: none; /* Hidden by default */
-  font-size: 2rem;
-  cursor: pointer;
+}
+
+/* Przycisk zamknięcia sidebara */
+.close-sidebar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
   background: none;
   border: none;
+  color: #000;
+  cursor: pointer;
+  display: none; /* Ukrycie przycisku przed otwarciem sidebaru */
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* Hide nav links on small screens */
-    flex-direction: column; /* Stack links vertically when visible */
-    background: #fff;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    padding: 1rem 0;
+.menu-bar.sidebar.show .close-sidebar {
+  display: block; /* Wyświetlenie po otwarciu sidebaru */
+}
+
+/* Responsive Styles for Small Screens */
+@media (max-width: 1024px) {
+  /* Hide menu-bar by default on small screens */
+  .menu-bar {
+    display: none;
   }
 
-  .nav-links.show {
-    display: flex; /* Show links when toggle is clicked */
-  }
-
-  .nav-links a,
-  .nav-links button {
-    text-align: center;
-    padding: 15px 10px;
-    width: initial;
-  }
-  .container {
-    justify-content: none;
-    display: flex;
-  }
+  /* Show the menu-toggle button */
   .menu-toggle {
-    display: flex; /* Show menu toggle button */
-    margin-left: auto;
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+  }
+
+  .nav-links {
+    margin-left: 0;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav-links a {
+    padding-top: 0.5vh;
+    cursor: pointer;
+    transform: translateY(100%);
+  }
+
+  /* Sidebar Menu */
+  .menu-bar.sidebar {
+    display: flex; /* Flex for vertical layout */
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh; /* Full screen height */
+    width: 250px; /* Sidebar width */
+    background: #d8d8d8;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 2rem 1rem;
+    gap: 1rem;
+    transform: translateX(100%); /* Initially hidden */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1500;
+  }
+
+  /* Show Sidebar when active */
+  .menu-bar.sidebar.show {
+    transform: translateX(0); /* Slide in */
+  }
+
+  .menu {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+/* Hero Section */
+.hero-section {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Image on the Left */
+.hero-image {
+  flex: 1; /* Left half takes 50% */
+  background-image: url("assets/truck.jpg");
+  background-size: cover; /* Ensure the image covers its container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
+  height: 100%; /* Full height */
+}
+
+/* Content on the Right */
+.hero-content {
+  flex: 1; /* Right half takes 50% */
+  background-color: white; /* White background for text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  color: black; /* Text color */
+  text-align: left;
+}
+
+/* Title Styling */
+.hero-title {
+  font-size: 3rem; /* Larger title */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Description Styling */
+.hero-description {
+  font-size: 1.5rem; /* Larger text for description */
+  line-height: 1.5;
+}
+
+/* Responsiveness for Smaller Screens */
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column; /* Stack the content vertically */
+  }
+
+  .hero-image {
+    flex: none;
+    height: 100%; /* Full height for background image */
+    width: 100%; /* Full width */
+    opacity: 0.5; /* Make the image semi-transparent */
+    position: absolute;
+    z-index: -1; /* Move the image behind the text */
+  }
+
+  .hero-content {
+    flex: none;
+    width: 100%;
+    height: 100%; /* Full height for centering */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center text vertically and horizontally */
+    text-align: center; /* Center-align the text */
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.5
+    ); /* Slightly transparent background for text */
   }
 }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  text-align: center;
-  color: white;
-  background: url("assets/truck.jpg") no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem; /* Slightly smaller title */
+  }
 
-.hero-text {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 2rem;
-  border-radius: 12px; /* Zaokrąglenie rogów */
-  border: 2px solid #ff220c; /* Czerwone obramowanie */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hero-text:hover {
-  transform: scale(1.05); /* Powiększenie ramki */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Subtelny cień */
+  .hero-description {
+    font-size: 1.2rem; /* Smaller text for description */
+  }
 }
 
 /* About Section */
 .about {
-  padding: 4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.about-images {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.about-images img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Usługi i pozostałe sekcje */
-.services,
-.fleet,
-.contact {
-  padding: 4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.services.content {
+  display: inline-block;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
 }
 
+.services-image {
+  flex: 1;
+}
+
+.services-image img {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 50vw;
+}
+
+.services-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fleet,
+.contact {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+.contact-map {
+  flex: 1; /* Mapa zajmuje równą część miejsca co formularz */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Galeria flotowa */
 .fleet-gallery {
   display: flex;

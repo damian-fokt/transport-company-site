@@ -28,13 +28,14 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
 // Language Translations
 const translations = {
   en: {
+    "hero": "Home",
     "about-link": "About Us",
     "services-link": "Services",
     "fleet-link": "Fleet",
     "contact-link": "Contact",
     "cta-btn": "Get a Quote",
     "hero-title": "Professional Heavy-Duty Transport",
-    "hero-desc": "Fast, reliable, and secure transport services across Poland and Europe.",
+    "hero-desc": "Domestic and international freight transport, efficient logistics operations. For over a decade, we have been providing comprehensive land transport and logistics services. Efficiency, punctuality, and responsibility for entrusted goods are the keys to successful cooperation.",
     "cta-learn-more": "Learn More",
     "about-title": "About Us",
     "about-desc": "Olbi-Trans specializes in heavy-duty transport and logistics within Poland and Europe...",
@@ -60,13 +61,14 @@ const translations = {
     "footer-text": "© 2024 Olbi-Trans. All rights reserved."
   },
   pl: {
+    "hero": "Strona główna",
     "about-link": "O nas",
     "services-link": "Usługi",
     "fleet-link": "Flota",
     "contact-link": "Kontakt",
     "cta-btn": "Uzyskaj wycenę",
     "hero-title": "Profesjonalny transport ciężki",
-    "hero-desc": "Szybkie, niezawodne i bezpieczne usługi transportowe w Polsce i Europie.",
+    "hero-desc": "Krajowy i międzynarodowy transport towarów, sprawnie działająca spedycja. Od ponad dekady działamy w branży transportu i spedycji oferując naszym Klientom kompleksowe usługi z zakresu transportu lądowego oraz spedycji. Sprawne działanie, punktualność i odpowiedzialność za powierzone ładunki są gwarantem udanej współpracy.",
     "cta-learn-more": "Dowiedz się więcej",
     "about-title": "O nas",
     "about-desc": "Olbi-Trans specjalizuje się w ciężkim transporcie i logistyce w Polsce i Europie...",
@@ -119,14 +121,47 @@ document.getElementById('language-toggle').addEventListener('click', () => {
 // Set Default Language to Polish
 switchLanguage('pl');
 
-// Set Default Language to Polish
-switchLanguage('pl');
 
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.querySelector(".menu-toggle"); // Przycisk otwarcia menu
+  const menuBar = document.querySelector(".menu-bar"); // Sidebar
+  const closeSidebar = document.querySelector(".close-sidebar"); // Przycisk zamknięcia sidebaru
 
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
+  // Otwieranie sidebara
+  menuToggle.addEventListener("click", function () {
+    menuBar.classList.add("show");
+  });
+
+  // Zamknięcie sidebara po kliknięciu w "X"
+  closeSidebar.addEventListener("click", function () {
+    menuBar.classList.remove("show");
+  });
+
+  // Zamknięcie sidebara po kliknięciu w link ('.menu-bar .nav-links a')).slice(0, -1)
+  document.querySelectorAll('.menu-bar .nav-links a:not(:last-child)').forEach((link) => {
+    link.addEventListener("click", () => {
+      menuBar.classList.remove("show");
+    });
+
+  });
+});
+
+
+// Monitorowanie pozycji scrolla
+const navbar = document.querySelector('.navbar');
+let lastScrollTop = 0; // Początkowa pozycja scrolla
+
+window.addEventListener('scroll', function () {
+  const currentScroll = window.scrollY;
+
+  // Sprawdzenie, czy strona jest na samej górze
+  if (currentScroll === 0) {
+    navbar.classList.add('transparent'); // Dodajemy klasę przezroczystości
+  } else {
+    navbar.classList.remove('transparent'); // Usuwamy klasę przezroczystości, gdy przewinięto w dół
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Zapobieganie negatywnym wartościom scrolla
 });
 
 document.addEventListener('DOMContentLoaded', () => {
